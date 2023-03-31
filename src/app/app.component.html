@@ -1,8 +1,18 @@
 <div class="contenedor">
   <form [formGroup]="formulario">
+    <p>FORMGROUP VALIDACIONES</p>
     <div class="input">
       <label for="name">Name</label>
       <input type="text" formControlName="name" name="name" />
+      <div *ngIf="formulario.get('name')?.touched">IS TOUCHED</div>
+      <div *ngIf="formulario.get('name')?.dirty">IS DIRTY</div>
+      <div *ngIf="formulario.get('name')?.invalid">IS INVALID</div>
+      <div *ngIf="formulario.get('name')?.valid">IS VALID</div>
+      <div *ngIf="formulario.get('name')?.errors?.['required']">IS REQUIRED</div>
+      <div *ngIf="formulario.get('name')?.errors?.['minlength']">
+        MIN-LENGTH ({{ formulario.get("name")?.errors?.['minlength'].requiredLength
+        }})
+      </div>
     </div>
     <div class="input">
       <label for="lastName">last Name</label>

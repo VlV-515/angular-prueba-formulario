@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -23,11 +23,12 @@ export class AppComponent implements OnInit {
 
   private iniciaFormulario(): void {
     this.formulario = new FormGroup({
-      name: new FormControl('', []),
+      name: new FormControl('', [Validators.required, Validators.minLength(5)]),
       lastName: new FormControl('', []),
     });
     this.iniciaSubcriptions();
   }
+
   private iniciaSubcriptions(): void {
     this.formulario.valueChanges.subscribe((fomValue) => {
       console.log({ fomValue });
