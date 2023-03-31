@@ -1,0 +1,11 @@
+.contenedor {
+  width: 20%;
+  padding: 1rem;
+  margin: auto;
+  .input {
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
