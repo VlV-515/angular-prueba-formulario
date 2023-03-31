@@ -1,4 +1,11 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-hijo',
@@ -6,10 +13,13 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   styleUrls: ['./hijo.component.scss'],
 })
 export class HijoComponent implements OnChanges {
+  detectionRef = Inject(ChangeDetectorRef);
+  constructor() {}
   @Input() variablePadre!: string;
   ngOnChanges(changes: SimpleChanges): void {
     console.log({ changesHijo: changes });
     const { variablePadre } = changes;
     console.log({ variablePadre });
+    this.detectionRef.detectChanges();
   }
 }
